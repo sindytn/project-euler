@@ -7,15 +7,18 @@ stopping condition.
 
 N = 600851475143
 
-dividend = N
-divisor = 2
-result = 1  # The last divisor
+def largest_prime_factor(n):
+    dividend = n
+    divisor = 2
+    result = 1  # The last divisor
 
-while result < dividend:
-    if dividend % divisor == 0:
-        result = divisor
-    while dividend % divisor == 0:
-        dividend /= divisor
-    divisor += 1
+    while result < dividend:
+        if dividend % divisor == 0:
+            result = divisor
+        while dividend % divisor == 0:
+            dividend /= divisor
+        divisor += 1
+    return result
 
-print(f"{result=}")
+if __name__ == "__main__":
+    print(f"result = {largest_prime_factor(N)}")
