@@ -10,15 +10,15 @@ N = 10000
 
 def compute_proper_divisors(num):
     result = [1]
-    for n in range(2, int(num ** (1/2))):
+    for n in range(2, int(num ** (1/2)) + 1):
         if num % n == 0:
             result += [n, num // n]
-    return result
+    return set(result)
 
 def amicable_numbers_sum():
     proper_divisors = {}
     for n in range (2, N):
-        proper_divisors[n] = compute_proper_divisors(n)
+        proper_divisors[n] = sorted(list(compute_proper_divisors(n)))
     proper_divisor_sums = {n: sum(proper_divisors[n]) for n in proper_divisors}
     amicable_numbers = set([])
     for a, b in proper_divisor_sums.items():
